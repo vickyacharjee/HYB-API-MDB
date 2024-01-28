@@ -1,4 +1,4 @@
-Welcome to the HybridSSRAPI repository! This project provides a hybrid API for handling Server-Side Rendering (SSR) with support for both JSON and HTML content. The API is designed to offer flexibility and versatility in serving data for various web development scenarios.
+Welcome to the HybridApiSSR repository! This project provides a hybrid API for handling Server-Side Rendering (SSR) with support for both JSON and HTML content. The API is designed to offer flexibility and versatility in serving data for various web development scenarios.
 
 ## Features
 
