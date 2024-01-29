@@ -4,7 +4,7 @@ Task for RESTFUL API
 
 GET
 //For server Side Rendering
-GET/users -> get all the listed users date
+GET/users -> get all the listed users data
 
 //For Api we will have different Path routing for having different client handling
 GET/api/users

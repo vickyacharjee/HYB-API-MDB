@@ -35,6 +35,26 @@ app.get('/api/users/:id',(req,res)=>{
 })
 
 
+//POST
+app.post('/api/users',(req,res)=>{
+    return res.json({status:'pending'})
+    //pending 
+})
+
+//PATCH
+app.post('/api/users/:id',(req,res)=>{ //:id because patch will have seperate entity
+    return res.json({status:'pending'})
+    //pending 
+})
+
+
+//DELETE
+app.delete('/api/users/:id',(req,res)=>{ //:id because delete will have seperate entity
+    return res.json({status:'pending'})
+    //pending 
+})
+
+
 app.listen(PORT,()=>console.log(`Server started at ${PORT}`))
 
 
