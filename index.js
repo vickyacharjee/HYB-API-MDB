@@ -94,9 +94,14 @@ app.route('/api/users/:id')
 
 .get((req,res)=>{
     const id=Number(req.params.id)
-    const user=users.find((user)=>user.id==id)
+    if (id>1000){
+        res.send("Out of scope")
+    }
+    else{
+        const user=users.find((user)=>user.id==id)
+        return res.send(user);
+    }
     
-    return res.send(user);
 })
 .put((req,res)=>{
     return res.json({status:'pending'})
