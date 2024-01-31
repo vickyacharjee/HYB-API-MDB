@@ -25,4 +25,13 @@ http://localhost/api/users/11
 
 ****Rest all api's will be as JSON Api*****
 
+For PUT 
 
+For POST
+
+For PATCH
+
+For DELETE
+
+Routing is set to : app.route('/api/users/:id')
+Using PostMAn we can see the out with different Http Methods

@@ -94,11 +94,11 @@ app.route('/api/users/:id')
 
 .get((req,res)=>{
     const id=Number(req.params.id)
-    if (id>1000){
+    const user=users.find((user)=>user.id==id)
+    if (id>=1000){
         res.send("Out of scope")
     }
     else{
-        const user=users.find((user)=>user.id==id)
         return res.send(user);
     }
     
