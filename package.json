@@ -1,12 +1,12 @@
 {
-  "name": "rest_api",
+  "name": "restapi",
   "version": "1.0.0",
-  "description": "Building RESTFUL API for Server Side Render as HTML and JSON API",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
-  "author": "Vicky Acharjee",
+  "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.2"
