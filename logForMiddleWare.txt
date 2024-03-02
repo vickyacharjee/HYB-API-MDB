@@ -1,0 +1,25 @@
+GET:/api/users: 1709115576897
+ The method is:GET The path is: /api/users Date is: 1709115741776
+ The method is:POST The path is: /api/users Date is: 1709115755609
+ The method is:POST The path is: /api/users/vicky Date is: 1709116558709
+ The method is:POST The path is: /api/users/vicky Date is: 1709120396003
+ The method is:POST The path is: /api/users/vicky/12 Date is: 1709120409875
+ The method is:POST The path is: /api/users/vicky/12 Date is: 1709120460448
+ The method is:GET The path is: /api/isers/1 Date is: 1709374945744
+ The method is:GET The path is: /favicon.ico Date is: 1709374945800
+ The method is:GET The path is: /api/isers/ Date is: 1709374948558
+ The method is:GET The path is: /api/users/ Date is: 1709374958607
+ The method is:POST The path is: /api/users/ Date is: 1709374978246
+ The method is:POST The path is: /api/users/ Date is: 1709375028544
+ The method is:POST The path is: /api/users/ Date is: 1,709,375,070,468
+ The method is:GET The path is: /api/users/ Date is: 1,709,375,103,441
+ The method is:GET The path is: / Date is: 1,709,375,955,537
+ The method is:GET The path is: / Date is: 1,709,375,962,423
+ The method is:POST The path is: / Date is: 1,709,375,991,034
+ The method is:GET The path is: / Date is: 1,709,375,994,816
+ The method is:GET The path is: / Date is: 1,709,376,001,408
+ The method is:GET The path is: / Date is: 1,709,376,064,923
+ The method is:GET The path is: /api/users Date is: 1,709,376,125,454
+ The method is:GET The path is: /api/users Date is: 1,709,376,130,029
+ The method is:GET The path is: / Date is: 1,709,376,153,885
+ The method is:GET The path is: /api/users Date is: 1,709,376,161,401

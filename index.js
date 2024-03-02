@@ -3,12 +3,34 @@ const app=express();
 const PORT=8000;
 const users=require('./mockData.json');
 const fs=require('fs');
+
+//MiddleWare plugins
 app.use(express.urlencoded({ extended: false }));
 
 
+//MiddleWae 1
+app.use((req,res,next)=>{
+  req.userName="vickyAcharjee"
+  console.log("hello from middle ware 1",req.userName) //req.userName is mainly used for refrenced to all the functions accrosed.
+  next();  //Authorize to remaining
+});
+
+//MiddelWare 2
+app.use((req,res,next)=>{
+  console.log("Hello from middleAWare 2");
+  next();//Authorize to remaining
+})
+
+//Middleware 3
+app.use((req,res,next)=>{
+  fs.appendFile('logForMiddleWare.txt',`\n The method is:${req.method} The path is: ${req.path} Date is: ${Date.now().toLocaleString()}`,(err,data)=>{
+    next();
+  })
+})
 
 //Home path
 app.get('/',(req,res)=>{
+  res.setHeader("X-Name","vicky acharjee");//custon http header using setHeader
   res.send("Hi this is home page");
 })
 
@@ -24,7 +46,7 @@ app.get('/users',(req,res)=>{
 
 //dynamically with ID
 app.get('/api/isers/:id',(req,res)=>{
-
+  
   const id=Number(req.params.id);
   const user=users.find((user)=>user.id===id);
   return res.json(user)
@@ -44,18 +66,19 @@ app.post('/api/users', (req, res) => {
 //using routing approach
 app.route('/api/users')
 .get((req,res)=>{
-    return res.json(users);
+  res.setHeader("X-Name","vicky acharjee");//custon http header using setHeader
+  return res.json(users);
 })
 
 
-.delete((req,res)=>{
-  const delBody=req.body;
-  users.pop();
-  fs.writeFile('.mcokData.json',JSON.stringify(users),(err,data)=>{
-    return res.send("updated or deleted")
-  })
+// .delete((req,res)=>{
+  //   const delBody=req.body;
+  //   users.pop();
+  //   fs.writeFile('.mcokData.json',JSON.stringify(users),(err,data)=>{
+//     return res.send("updated or deleted")
+//   })
 
-})
+// })
 
 
 app.listen(PORT,()=>console.log(`server created at ${PORT}`));
