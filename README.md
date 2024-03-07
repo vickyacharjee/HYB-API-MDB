@@ -40,7 +40,7 @@ To run the API locally, follow these steps:
 
 1. Install dependencies: `npm install`
 2. Start the server: `npm start`
-3. Access the API at `http://localhost:3000`
+3. Access the API at `http://localhost:8000`
 
 ## API Endpoints
 
