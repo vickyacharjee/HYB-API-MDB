@@ -1,9 +1,9 @@
 const express=require('express');
 const app=express();
 const PORT=8000;
-const users=require('./mockData.json');
 const fs=require('fs');
-const { error } = require('console');
+const mongoose=require('mongoose');
+const { error, timeStamp } = require('console');
 
 //MiddleWare plugins for PostMan 
 app.use(express.urlencoded({ extended: false }));
@@ -30,6 +30,42 @@ app.use((req,res,next)=>{
   })
 })
 
+//connection for MongoDB
+mongoose.connect('mongodb://127.0.0.1:27017/youTubeApp')
+.then(()=>console.log("MongoDB Connected:)"))
+.catch((err)=>console.log("Mongo Error",err))
+
+
+//Schema For MONGO
+const userSchema = mongoose.Schema({
+  firstName: {
+    type: String,
+    required: true
+  },
+  lastName: {
+    type: String,
+  },
+  mail: {
+    type: String,
+    required: true,
+  },
+  jobTitle: {
+    type: String
+  },
+  gender: {
+    type: String,
+    required: true
+  }
+},
+{
+  timestamps: true  // Corrected option name
+});
+//Model
+const user=mongoose.model("user",userSchema);
+
+
+
+
 //Home path
 app.get('/',(req,res)=>{
   // header for additional information
@@ -37,58 +73,65 @@ app.get('/',(req,res)=>{
   res.send("Hi this is home page");
 })
 
+
+
 //Dynamic html embeded 
-app.get('/users',(req,res)=>{
+app.get('/users',async(req,res)=>{
+  const allDBUser=await user.find({});
   const html=`
   <ul>
-  ${users.map((user)=>`<li>${user.first_name}</li> <hr> <li>${user.last_name}</li>`)}
+  ${allDBUser.map((user)=>`<li>${user.firstName}</li> <hr> <li>${user.lastName}</li>`).join("")}
   </ul>`;
   res.send(html);  
 })
 
 
 //dynamically with ID
-app.get('/api/isers/:id',(req,res)=>{
-  
-  const id=Number(req.params.id);
-  const user=users.find((user)=>user.id===id);
+app.get('/api/isers/:id',async(req,res)=>{
+  const usee=await user.findById(req.params.id)
   if(!user){
      res.status(404).json({status:"user not found or out of scope"})//validation if it went out of scope since the current limit is 1000+
   }
-  return res.json(user)
+  return res.json(usee)
 })
 
 
 //using post method
-app.post('/api/users', (req, res) => {
+app.post('/api/users', async (req, res) => {
   const body = req.body;
   if(!body.first_name || !body.last_name || !body.email || !body.gender || !body.Work_Title){ //basic validation 400 indicates bad request  
     res.status(400).json({status:"Kindly fill the form completely"});
   }
-  users.push({...body, id: users.length+1});
-  fs.writeFile('./mockData.json',JSON.stringify(users),(err,data)=>{
-    //adding custom http status code 201 saying created.
-    return res.status(201).json({ status: 'send' }); // Assuming 'pending' is a string
+  const result=await user.create({
+    firstName:body.first_name,
+    lastName:body.last_name,
+    mail:body.email,
+    gender:body.gender,
+    jobTitle:body.Work_Title
   })
-  //console.log("body", body); // Use a comma instead of concatenating directly
+  console.log(result); 
+  return res.status(201).json({msg:"SUCCESS"})
 });
 
 
-
-//using routing approach
-app.route('/api/users')
-.get((req,res)=>{
+app.get('/api/users',async (req,res)=>{
+  const allDBUser=await user.find({});
   res.setHeader("X-Name","vicky acharjee");//custon http header using setHeader
-  return res.json(users);
+  return res.json(allDBUser);
 })
 
+//using routing approach
+app.route('/api/users/:id')
 
-// .delete((req,res)=>{
-  //   const delBody=req.body;
-  //   users.pop();
-  //   fs.writeFile('.mcokData.json',JSON.stringify(users),(err,data)=>{
-//     return res.send("updated or deleted")
-//   })
+.patch(async (req,res)=>{
+  await user.findByIdAndUpdate(req.params.id,{lastName:"Changed"})
+  return res.json({masg:"updated"})
+})
+
+.delete(async (req,res)=>{
+    await user.findByIdAndDelete(req.params.id)
+    return res.send("updated or deleted")
+  })
 
 // })
 
