@@ -87,7 +87,7 @@ app.get('/users',async(req,res)=>{
 
 
 //dynamically with ID
-app.get('/api/isers/:id',async(req,res)=>{
+app.get('/api/users/:id',async(req,res)=>{
   const usee=await user.findById(req.params.id)
   if(!user){
      res.status(404).json({status:"user not found or out of scope"})//validation if it went out of scope since the current limit is 1000+
