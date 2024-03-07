@@ -1,9 +1,71 @@
-Welcome to the HybridApiSSR repository! This project provides a hybrid API for handling Server-Side Rendering (SSR) with support for both JSON and HTML content. The API is designed to offer flexibility and versatility in serving data for various web development scenarios.
+# Restful API with MongoDB and Express
+
+## Overview
+
+I have created a Restful API that supports all HTTP methods and performs CRUD operations in a MongoDB database. The API is built using Express.js and connected to MongoDB using Mongoose. Additionally, the API includes basic server-side rendering capabilities.
+
+## Technologies Used
+
+- Node.js
+- Express.js
+- MongoDB
+- Mongoose
 
 ## Features
 
-- **Server-Side Rendering (SSR):** Enjoy the benefits of server-side rendering for HTML content to enhance your web application's performance and SEO.
+### CRUD Operations
 
-- **JSON API Support:** Easily integrate and serve JSON data through the API for dynamic client-side rendering in single-page applications (SPAs).
+The API supports the following CRUD operations:
 
-- **Unified API:** This API seamlessly handles both JSON and HTML requests within the same project, allowing you to choose the rendering approach that best suits your needs.
+- **Create (POST):** Create new records in the database.
+- **Read (GET):** Retrieve data from the database.
+- **Update (PUT/PATCH):** Modify existing records in the database.
+- **Delete (DELETE):** Remove records from the database.
+
+### Database Connection
+
+The API is connected to a MongoDB database using Mongoose, providing a robust and efficient way to interact with the data.
+
+### Express.js Integration
+
+Express.js is used as the web application framework to handle routing, middleware, and HTTP requests/responses.
+
+### Server-Side Rendering
+
+In addition to RESTful endpoints, the API supports basic server-side rendering. This feature enables the server to generate dynamic HTML content, enhancing the user experience.
+
+## Usage
+
+To run the API locally, follow these steps:
+
+1. Install dependencies: `npm install`
+2. Start the server: `npm start`
+3. Access the API at `http://localhost:3000`
+
+## API Endpoints
+
+### Create (POST)
+
+- Endpoint: `/api/users`
+- Description: Create a new record in the database.
+
+### Read (GET)
+
+- Endpoint: `/api/users`
+- Description: Retrieve data from the database.
+
+### Update (PUT/PATCH)
+
+- Endpoint: `/api/users/:id`
+- Description: Modify an existing record in the database.
+
+### Delete (DELETE)
+
+- Endpoint: `/api/users/:id`
+- Description: Remove a record from the database.
+
+## Server-Side Rendering
+
+The API supports server-side rendering at the root URL (`/users`). This feature enhances the user interface by rendering dynamic content on the server before sending it to the client.
+
+Feel free to explore and extend this API for your specific needs!
