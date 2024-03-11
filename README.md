@@ -40,7 +40,7 @@ To run the API locally, follow these steps:
 
 1. Install dependencies: `npm install`
 2. Start the server: `npm start`
-3. Access the API at `http://localhost:3000`
+3. Access the API at `http://localhost:8000`
 
 ## API Endpoints
 
@@ -48,6 +48,32 @@ To run the API locally, follow these steps:
 
 - Endpoint: `/api/users`
 - Description: Create a new record in the database.
+- ## Posting Data via Postman
+
+To add new records to the database using the API, you can use Postman – a popular tool for testing and developing APIs. Follow these steps to perform a POST request and create a new record:
+
+1. **Open Postman:** If you don't have Postman installed, download and install it from [here](https://www.postman.com/downloads/).
+
+2. **Set the Request Type:** Choose the `POST` method from the dropdown menu.
+
+3. **Enter the API URL:** Set the URL to `http://localhost:8000/api/users`.
+
+4. **Add Request Body:**
+   - Select the `Body` tab in Postman.
+   - Choose `raw` and set the format to `JSON (application/json)`.
+   - Provide the data you want to post in the request body. For example:
+     ```json
+    {
+  "firstName": "vicky",
+  "lastName": "acharjee",
+  "mail": "vicky@test.com",
+  "jobTitle": "soft.dev",
+  "gender": "Male"
+}
+
+     ```
+
+5. **Send the Request:** Click the "Send" button to submit the POST request.
 
 ### Read (GET)
 
